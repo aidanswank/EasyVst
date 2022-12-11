@@ -2,7 +2,7 @@
 #include <EasyVst.h>
 
 // https://github.com/cameron314/concurrentqueue
-#include <concurrentqueue.h>
+#include <concurrentqueue/concurrentqueue.h>
 // http://portaudio.com/
 #include <portaudio.h>
 //
@@ -11,7 +11,7 @@
 // Add __WINDOWS_MM__ or __MACOSX_CORE__ to your preprocessor definitions depending on your target platform
 // This is necessary for RtMidi to use the correct backend
 //
-#include <RtMidi.h>
+#include <rtmidi/RtMidi.h>
 
 #include <iostream>
 #include <chrono>

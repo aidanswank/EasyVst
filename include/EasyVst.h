@@ -16,6 +16,11 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_syswm.h>
 
+#ifdef __APPLE__
+	// from window.mm
+	void* getNSView(NSWindow* nsWindow);
+#endif
+
 class EasyVst {
 public:
 	EasyVst();

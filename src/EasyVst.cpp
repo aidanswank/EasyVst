@@ -322,6 +322,11 @@ bool EasyVst::createView()
 		_printError("Editor view does not support HWND");
 		return false;
 }
+#elif __APPLE__
+	if (_view->isPlatformTypeSupported(Steinberg::kPlatformTypeNSView) != Steinberg::kResultTrue) {
+		_printError("Editor view does not support NSView");
+		return false;
+	}
 #else
 	_printError("Platform is not supported yet");
 	return false;
@@ -339,10 +344,15 @@ bool EasyVst::createView()
 		_printError("Failed to attach editor view to HWND");
 		return false;
 	}
+#elif __APPLE__
+	if (_view->attached( getNSView(wmInfo.info.cocoa.window) , Steinberg::kPlatformTypeNSView ) != Steinberg::kResultOk) {
+		_printError("Failed to attach editor view to cocoa");
+		return false;
+	}
 #endif
 
 	return true;
-	}
+}
 
 void EasyVst::destroyView()
 {
